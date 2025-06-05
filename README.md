@@ -1,0 +1,2 @@
+# JFS-Project-Securing-a-RESTful-API-with-Spring-Security-and-JWT
+This project involves developing a secured RESTful API for a User Management System using Spring Boot and Spring Security. It enables user registration, authentication with JWT tokens, and role-based access control. The API also supports essential user operations, including viewing profiles, updating information, and account deletion.
