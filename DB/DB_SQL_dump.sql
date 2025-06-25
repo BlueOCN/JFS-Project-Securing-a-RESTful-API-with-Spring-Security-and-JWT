@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
--- Host: localhost    Database: usermanagement
+-- Host: localhost    Database: usermanagement2
 -- ------------------------------------------------------
 -- Server version	8.0.42
 
@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `authorities`
+--
+
+DROP TABLE IF EXISTS `authorities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `authorities` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `authority` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKhjuy9y4fd8v5m3klig05ktofg` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authorities`
+--
+
+LOCK TABLES `authorities` WRITE;
+/*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
+INSERT INTO `authorities` VALUES (4,'ROLE_USER','user1'),(5,'ROLE_ADMIN','admin'),(10,'ROLE_USER','user2');
+/*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -24,14 +50,12 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
+  `enabled` bit(1) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('ADMIN','USER') NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `username` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `UKr43af9ap4edm43mmtq01oddj6` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +64,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'johndoe42','hashed_password_1','ADMIN','2025-06-06 01:49:48','2025-06-06 01:49:48'),(2,'janedoe88','hashed_password_2','USER','2025-06-06 01:49:48','2025-06-06 01:49:48'),(3,'alexsmith32','hashed_password_3','USER','2025-06-06 01:49:48','2025-06-06 01:49:48'),(4,'maria88','hashed_password_4','ADMIN','2025-06-06 01:49:48','2025-06-06 01:49:48'),(5,'carlos_torres','hashed_password_5','USER','2025-06-06 01:49:48','2025-06-06 01:49:48'),(6,'sophia_m','hashed_password_6','USER','2025-06-06 01:49:48','2025-06-06 01:49:48'),(7,'david_j','hashed_password_7','ADMIN','2025-06-06 01:49:48','2025-06-06 01:49:48'),(8,'michelle_27','hashed_password_8','USER','2025-06-06 01:49:48','2025-06-06 01:49:48'),(9,'robert_x','hashed_password_9','ADMIN','2025-06-06 01:49:48','2025-06-06 01:49:48'),(10,'emily_w','hashed_password_10','USER','2025-06-06 01:49:48','2025-06-06 01:49:48');
+INSERT INTO `users` VALUES (8,_binary '','$2a$10$q5Jt1wi4wJMqG3JFzB3RBuvlH8F308lztF7jRzkDFUKMPC1ouKQjy','user1'),(9,_binary '','$2a$10$rv1ds6qkwSaQyGk761C5leSKZP.A6p8Nlg.BrfUldJGVwm0qznT/a','admin'),(14,_binary '','$2a$10$T.jcyfENTJ6mpX4FVLafIuyP1RJzvizxk5AVl3baOkXZ27R7I4RyK','user2');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-05 19:55:39
+-- Dump completed on 2025-06-24 20:56:13
