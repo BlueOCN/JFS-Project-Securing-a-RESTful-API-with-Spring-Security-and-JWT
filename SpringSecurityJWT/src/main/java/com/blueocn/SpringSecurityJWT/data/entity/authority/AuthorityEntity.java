@@ -1,4 +1,4 @@
-package com.blueocn.SpringSecurityJWT.data.entity.user;
+package com.blueocn.SpringSecurityJWT.data.entity.authority;
 
 import jakarta.persistence.*;
 

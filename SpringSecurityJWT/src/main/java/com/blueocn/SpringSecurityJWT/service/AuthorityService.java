@@ -2,7 +2,7 @@ package com.blueocn.SpringSecurityJWT.service;
 
 import com.blueocn.SpringSecurityJWT.data.dto.RegisterRequest;
 import com.blueocn.SpringSecurityJWT.data.dto.UpdateRequest;
-import com.blueocn.SpringSecurityJWT.data.entity.user.AuthorityEntity;
+import com.blueocn.SpringSecurityJWT.data.entity.authority.AuthorityEntity;
 import com.blueocn.SpringSecurityJWT.data.repository.AuthorityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.blueocn.SpringSecurityJWT.data.repository;
 
-import com.blueocn.SpringSecurityJWT.data.entity.user.AuthorityEntity;
+import com.blueocn.SpringSecurityJWT.data.entity.authority.AuthorityEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

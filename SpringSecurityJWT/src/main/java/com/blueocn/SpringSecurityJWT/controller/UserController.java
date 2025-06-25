@@ -6,6 +6,7 @@ import com.blueocn.SpringSecurityJWT.data.dto.UpdateRequest;
 import com.blueocn.SpringSecurityJWT.data.entity.user.UserEntity;
 import com.blueocn.SpringSecurityJWT.service.AuthorityService;
 import com.blueocn.SpringSecurityJWT.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
+    @SecurityRequirement(name = "basicAuth")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<List<UserEntity>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
@@ -62,6 +65,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{username}")
+    @SecurityRequirement(name = "basicAuth")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<String> updateUser(@PathVariable("username") String username, @Valid @RequestBody UpdateRequest request) {
         userService.updateUser(username, request);
         authorityService.updateAuthority(username, request);
@@ -71,6 +76,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{username}")
+    @SecurityRequirement(name = "basicAuth")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<String> deleteUser(@PathVariable("username") String username) {
         userService.deleteUser(username);
         authorityService.deleteAuthority(username);
@@ -80,6 +87,8 @@ public class UserController {
 
     @GetMapping("/me")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @SecurityRequirement(name = "basicAuth")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<UserEntity> getCurrentUser(Authentication authentication) {
         String username = authentication.getName();
         return ResponseEntity.ok(userService.getUserByUsername(username));

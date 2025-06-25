@@ -39,7 +39,14 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(requests -> requests
                 // Public Endpoints
-                .requestMatchers("/users/login", "/users/register").permitAll()
+                .requestMatchers(
+                        "/v3/api-docs",
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html",
+                        "/users/login",
+                        "/users/register"
+                ).permitAll()
                 // Protected Endpoints
                 .anyRequest().authenticated()
         );
