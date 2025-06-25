@@ -33,9 +33,6 @@ target/
 out/
 build/
 
-# Logs
-*.log
-
 # OS-specific files
 .DS_Store
 Thumbs.db
